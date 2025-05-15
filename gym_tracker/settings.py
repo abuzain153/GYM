@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@8j%1x^p_ujn4e3xjk!#p7)7st)jdk%fva%%cx(5v#)#%6dzgr'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-@8j%1x^p_ujn4e3xjk!#p7)7st)jdk%fva%%cx(5v#)#%6dzgr')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ.get('RENDER_EXTERNAL_HOSTNAME'), '127.0.0.1']
+if DEBUG:
+    ALLOWED_HOSTS.append('*')
 
 
 # Application definition
@@ -75,8 +78,12 @@ WSGI_APPLICATION = 'gym_tracker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DATABASE_NAME', 'your_database_name'),  # Store in Render Environment Variables
+        'USER': os.environ.get('DATABASE_USER', 'your_username'),      # Store in Render Environment Variables
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'your_password'),  # Store in Render Environment Variables
+        'HOST': os.environ.get('DATABASE_HOST', 'your_host'),          # Store in Render Environment Variables
+        'PORT': os.environ.get('DATABASE_PORT', '5432'),              # Default PostgreSQL port
     }
 }
 
@@ -116,6 +123,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'workout_app/static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
