@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>إضافة تمرين</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>إضافة تمرين جديد</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="error">{{ form.name.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.day_of_week.id_for_label }}">{{ form.day_of_week.label }}</label>
+                {{ form.day_of_week }}
+                {% if form.day_of_week.errors %}
+                    <div class="error">{{ form.day_of_week.errors }}</div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">حفظ التمرين</button>
+        </form>
+        <div class="mt-3">
+            <a href="{% url 'home' %}" class="btn btn-secondary">الرجوع للصفحة الرئيسية</a>
+        </div>
+    </div>
+</body>
+</html>
