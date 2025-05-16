@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>تأكيد حذف التمرين</title>
+</head>
+<body>
+    <h2>هل أنت متأكد أنك تريد حذف التمرين "{{ workout.name }}"؟</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">نعم، احذفه</button>
+        <a href="{% url 'home' %}">إلغاء</a>
+    </form>
+</body>
+</html>
+

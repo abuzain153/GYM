@@ -5,10 +5,22 @@ from .models import Workout, WorkoutDay, ExerciseSet
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages
+from django.contrib.auth.views import LogoutView
+@login_required
+def delete_workout(request, workout_id):
+    workout = get_object_or_404(Workout, id=workout_id, user=request.user)
+    if request.method == 'POST':
+        workout.delete()
+        messages.success(request, "تم حذف التمرين بنجاح.")
+        return redirect('home')  # أو توجه لصفحة مناسبة بعد الحذف
+    return render(request, 'workout_app/confirm_delete.html', {'workout': workout})
 
 @login_required
 def home(request):
-    return render(request, 'workout_app/home.html')
+    workouts = Workout.objects.filter(user=request.user)
+    return render(request, 'workout_app/home.html', {'workouts': workouts})
+
 
 @login_required
 def plan_week_overview(request, week_number=1):
@@ -105,4 +117,5 @@ def login_view(request):
             return redirect('home')  # قم بتغيير 'home' إلى الرابط الذي تريد إعادة التوجيه إليه بعد تسجيل الدخول
     else:
         form = AuthenticationForm()
-    return render(request, 'workout_app/login.html', {'form': form})
+    # قم بتغيير اسم القالب هنا ليشير إلى المسار الذي ذكرته
+    return render(request, 'registration/login.html', {'form': form})

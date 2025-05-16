@@ -13,8 +13,25 @@
         <div class="actions">
             <a href="{% url 'plan_week_overview' %}" class="btn btn-primary">تخطيط الأسبوع</a>
             <a href="{% url 'add_workout' %}" class="btn btn-secondary">إضافة تمرين جديد</a>
-            <a href="{% url 'logout' %}" class="btn btn-info">تسجيل الخروج</a>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-info">تسجيل الخروج</button>
+            </form>
         </div>
+
+        <h2>قائمة التمارين الخاصة بك</h2>
+        {% if workouts %}
+            <ul>
+                {% for workout in workouts %}
+                    <li>
+                        {{ workout.name }}
+                        <a href="{% url 'delete_workout' workout.id %}" class="btn btn-danger btn-sm">حذف</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>لا توجد تمارين بعد. يمكنك إضافة تمرين جديد من الأعلى.</p>
+        {% endif %}
     </div>
 </body>
 </html>
