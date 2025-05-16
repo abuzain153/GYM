@@ -28,7 +28,6 @@ INSTALLED_APPS = [
 # ========== MIDDLEWARE ==========
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'dj_static.middleware.StaticServe',  # مهم لتشغيل static على Render
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
