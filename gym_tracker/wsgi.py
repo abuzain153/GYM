@@ -1,8 +1,9 @@
 import os
 
 from django.core.wsgi import get_wsgi_application
-from dj_static import Cling, MediaCling  # استورد MediaCling كمان
+from dj_static import Cling, MediaCling  # استيراد Cling و MediaCling
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gym_tracker.settings')
 
-application = Cling(MediaCling(get_wsgi_application(), static_url='/static/', media_url='/media/'), static_url='/static/')
+application = Cling(MediaCling(get_wsgi_application()))
+
