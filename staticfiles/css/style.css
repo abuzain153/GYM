@@ -1,0 +1,388 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    direction: rtl; /* لضبط اتجاه النص إلى اليمين */
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 100%;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+input[type="text"],
+select,
+input[type="password"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.mt-3 {
+    margin-top: 15px;
+}
+
+/* تنسيقات إضافية للصفحة الرئيسية */
+.home-page {
+    text-align: center; /* لمركزة النص والأزرار في الصفحة الرئيسية */
+}
+
+.home-page h1 {
+    margin-bottom: 30px;
+}
+
+.home-page .lead {
+    font-size: 1.2em;
+    color: #777;
+    margin-bottom: 40px;
+}
+
+.home-page .actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center; /* لمركزة الأزرار أفقياً */
+}
+
+/* تنسيقات إضافية لصفحة تسجيل الدخول */
+.login-page {
+    width: 350px; /* تقليل العرض قليلاً لصفحة تسجيل الدخول */
+}
+
+.login-page h1 {
+    margin-bottom: 25px;
+}
+
+.login-page .mt-3 {
+    text-align: center; /* لمركزة رابط إنشاء حساب ورابط الرجوع */
+}
+
+.login-page .mt-3 p {
+    margin-bottom: 10px;
+}
+
+/* تنسيقات إضافية لصفحة تخطيط اليوم */
+.plan-day-page {
+    width: 500px; /* زيادة العرض قليلاً */
+}
+
+.plan-day-page h1 {
+    margin-bottom: 30px;
+}
+
+.plan-day-page .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.checkbox-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.checkbox-list li {
+    margin-bottom: 8px;
+}
+
+.checkbox-list label {
+    display: block;
+    cursor: pointer;
+}
+
+.checkbox-list input[type="checkbox"] {
+    margin-left: 5px;
+}
+
+.list-group {
+    list-style: none;
+    padding: 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    border-radius: 3px;
+}
+
+.btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
+    background-color: transparent;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.mt-4 {
+    margin-top: 25px;
+}
+
+/* تنسيقات إضافية لصفحة نظرة عامة على تخطيط الأسبوع */
+.plan-week-overview-page {
+    width: 400px; /* يمكنك تعديل العرض حسب الرغبة */
+}
+
+.plan-week-overview-page h1 {
+    margin-bottom: 30px;
+}
+
+.week-days-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.week-days-list li {
+    margin-bottom: 10px;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.week-navigation {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.week-navigation a {
+    text-decoration: none;
+}
+
+.mx-2 {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #777;
+}
+
+/* تنسيقات إضافية لصفحة تسجيل الجولات */
+.record-set-page {
+    width: 600px; /* زيادة العرض لاستيعاب النموذج */
+}
+
+.record-set-page h1 {
+    margin-bottom: 30px;
+}
+
+.formset-container {
+    margin-bottom: 20px;
+}
+
+.formset-item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.formset-item legend {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    width: auto;
+}
+
+.record-set-page .form-group {
+    margin-bottom: 15px;
+}
+
+.record-set-page label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+/* تنسيقات إضافية لصفحة عرض التقدم */
+.view-progress-page {
+    width: 80%; /* زيادة العرض للصفحة */
+    max-width: 960px;
+}
+
+.view-progress-page h1 {
+    margin-bottom: 30px;
+}
+
+.filter-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.filter-form .form-group {
+    margin-bottom: 0; /* إزالة الهامش السفلي داخل النموذج */
+    flex-grow: 1;
+}
+
+.filter-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+.filter-form select,
+.filter-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.filter-form button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.filter-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.progress-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.progress-table th,
+.progress-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: right; /* ضبط اتجاه النص داخل الخلايا */
+}
+
+.progress-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.progress-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
