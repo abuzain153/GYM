@@ -59,17 +59,14 @@ TEMPLATES = [
 ]
 
 
-# ========== DATABASE ==========
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DATABASE_NAME', 'your_database_name'),
-        'USER': os.environ.get('DATABASE_USER', 'your_username'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'your_password'),
-        'HOST': os.environ.get('DATABASE_HOST', 'your_host'),
-        'PORT': os.environ.get('DATABASE_PORT', '5432'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
 
 
 # ========== PASSWORD VALIDATORS ==========
