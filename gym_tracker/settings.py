@@ -3,7 +3,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# ========== SECURITY ==========
+# ========== الأمان ==========
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-...')
 
 DEBUG = os.environ.get('DEBUG') == 'True'
@@ -13,7 +13,7 @@ if DEBUG:
     ALLOWED_HOSTS.append('*')
 
 
-# ========== APPS ==========
+# ========== التطبيقات ==========
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,7 +25,7 @@ INSTALLED_APPS = [
 ]
 
 
-# ========== MIDDLEWARE ==========
+# ========== البرامج الوسيطة ==========
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -37,12 +37,12 @@ MIDDLEWARE = [
 ]
 
 
-# ========== URLS & WSGI ==========
+# ========== الروابط و WSGI ==========
 ROOT_URLCONF = 'gym_tracker.urls'
 WSGI_APPLICATION = 'gym_tracker.wsgi.application'
 
 
-# ========== TEMPLATES ==========
+# ========== القوالب ==========
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -59,7 +59,7 @@ TEMPLATES = [
 ]
 
 
-# ========== DATABASES ==========
+# ========== قواعد البيانات ==========
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -72,7 +72,7 @@ DATABASES = {
 }
 
 
-# ========== PASSWORD VALIDATORS ==========
+# ========== مدققات كلمة المرور ==========
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -81,23 +81,43 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# ========== INTERNATIONALIZATION ==========
+# ========== التدويل ==========
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
 
-# ========== STATIC FILES ==========
+# ========== الملفات الثابتة ==========
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'workout_app/static')]
 
 
-# ========== MEDIA FILES ==========
+# ========== ملفات الوسائط ==========
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-# ========== DEFAULT FIELD ==========
+# ========== الحقل الافتراضي ==========
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ========== التسجيل (Logging) ==========
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',  # أو 'INFO' أو 'WARNING' إلخ.
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'workout_app': {  # اسم التطبيق بتاعك
+            'handlers': ['console'],
+            'level': 'DEBUG',  # أو 'INFO' أو 'WARNING'
+            'propagate': True,
+        },
+    },
+}
