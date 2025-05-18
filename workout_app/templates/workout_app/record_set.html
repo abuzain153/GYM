@@ -2,10 +2,14 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الجولات لـ {{ exercise.name }} في يوم {{ workout_day }}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
     <div class="container record-set-page">
         <h1>تسجيل الجولات لـ {{ exercise.name }} في يوم {{ workout_day }}</h1>
@@ -14,36 +18,36 @@
             {{ formset.management_form }}
             <div class="formset-container">
                 {% for form in formset %}
-                    <fieldset class="formset-item">
-                        <legend>الجولة رقم {{ forloop.counter }}</legend>
-                        {% for hidden in form.hidden_fields %}
-                            {{ hidden }}
-                        {% endfor %}
-                        <div class="form-group">
-                            <label for="{{ form.set_number.id_for_label }}">{{ form.set_number.label }}</label>
-                            {{ form.set_number }}
-                            {% if form.set_number.errors %}
-                                <div class="error">{{ form.set_number.errors }}</div>
-                            {% endif %}
-                        </div>
-                        <div class="form-group">
-                            <label for="{{ form.repetitions.id_for_label }}">{{ form.repetitions.label }}</label>
-                            {{ form.repetitions }}
-                            {% if form.repetitions.errors %}
-                                <div class="error">{{ form.repetitions.errors }}</div>
-                            {% endif %}
-                        </div>
-                        <div class="form-group">
-                            <label for="{{ form.weight.id_for_label }}">{{ form.weight.label }}</label>
-                            {{ form.weight }}
-                            {% if form.weight.errors %}
-                                <div class="error">{{ form.weight.errors }}</div>
-                            {% endif %}
-                        </div>
-                        {% if form.non_field_errors %}
-                            <div class="error">{{ form.non_field_errors }}</div>
+                <fieldset class="formset-item">
+                    <legend>الجولة رقم {{ forloop.counter }}</legend>
+                    {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                    {% endfor %}
+                    <div class="form-group">
+                        <label for="{{ form.set_number.id_for_label }}">{{ form.set_number.label }}</label>
+                        {{ form.set_number }}
+                        {% if form.set_number.errors %}
+                        <div class="error">{{ form.set_number.errors }}</div>
                         {% endif %}
-                    </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.repetitions.id_for_label }}">{{ form.repetitions.label }}</label>
+                        {{ form.repetitions }}
+                        {% if form.repetitions.errors %}
+                        <div class="error">{{ form.repetitions.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.weight.id_for_label }}">{{ form.weight.label }}</label>
+                        {{ form.weight }}
+                        {% if form.weight.errors %}
+                        <div class="error">{{ form.weight.errors }}</div>
+                        {% endif %}
+                    </div>
+                    {% if form.non_field_errors %}
+                    <div class="error">{{ form.non_field_errors }}</div>
+                    {% endif %}
+                </fieldset>
                 {% endfor %}
             </div>
             <button type="submit" class="btn btn-primary">حفظ الجولات</button>
@@ -53,4 +57,5 @@
         </div>
     </div>
 </body>
+
 </html>

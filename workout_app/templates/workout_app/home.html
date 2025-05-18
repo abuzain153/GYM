@@ -2,10 +2,14 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>صفحة تتبع التمارين الرئيسية</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
     <div class="container home-page">
         <h1>مرحباً بك في متتبع التمارين</h1>
@@ -21,17 +25,18 @@
 
         <h2>قائمة التمارين الخاصة بك</h2>
         {% if workouts %}
-            <ul>
-                {% for workout in workouts %}
-                    <li>
-                        {{ workout.name }}
-                        <a href="{% url 'delete_workout' workout.id %}" class="btn btn-danger btn-sm">حذف</a>
-                    </li>
-                {% endfor %}
-            </ul>
+        <ul class="workout-list">
+            {% for workout in workouts %}
+            <li>
+                <span class="workout-name">{{ workout.name }}</span>
+                <a href="{% url 'delete_workout' workout.id %}" class="btn btn-danger btn-sm">حذف</a>
+            </li>
+            {% endfor %}
+        </ul>
         {% else %}
-            <p>لا توجد تمارين بعد. يمكنك إضافة تمرين جديد من الأعلى.</p>
+        <p>لا توجد تمارين بعد. يمكنك إضافة تمرين جديد من الأعلى.</p>
         {% endif %}
     </div>
 </body>
+
 </html>

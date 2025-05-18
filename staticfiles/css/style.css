@@ -16,7 +16,8 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;
-    max-width: 100%;
+    max-width: 100%; /* عشان ميكبرش عن عرض الشاشة في الجوال */
+    box-sizing: border-box; /* عشان الـ padding والـ border يبقوا جوه الـ width */
 }
 
 h1 {
@@ -63,6 +64,7 @@ input[type="number"] {
     font-size: 16px;
     transition: background-color 0.3s ease;
     text-decoration: none;
+    text-align: center; /* عشان النص يبقى في النص لما الأزرار تنزل تحت بعض */
 }
 
 .btn-primary {
@@ -117,9 +119,22 @@ input[type="number"] {
     justify-content: center; /* لمركزة الأزرار أفقياً */
 }
 
+/* تعديل تنسيقات الأزرار في الصفحة الرئيسية للجوال */
+@media (max-width: 600px) {
+    .home-page .actions {
+        flex-direction: column; /* عشان الأزرار تنزل تحت بعض في الجوال */
+        align-items: stretch; /* عشان الأزرار تاخد عرض كامل */
+    }
+
+    .home-page .actions .btn {
+        width: 100%; /* عشان الأزرار تاخد عرض كامل في الجوال */
+    }
+}
+
 /* تنسيقات إضافية لصفحة تسجيل الدخول */
 .login-page {
     width: 350px; /* تقليل العرض قليلاً لصفحة تسجيل الدخول */
+    max-width: 95%; /* عشان ميكبرش عن عرض الشاشة في الجوال */
 }
 
 .login-page h1 {
@@ -137,6 +152,7 @@ input[type="number"] {
 /* تنسيقات إضافية لصفحة تخطيط اليوم */
 .plan-day-page {
     width: 500px; /* زيادة العرض قليلاً */
+    max-width: 95%; /* عشان ميكبرش عن عرض الشاشة في الجوال */
 }
 
 .plan-day-page h1 {
@@ -213,6 +229,7 @@ input[type="number"] {
 /* تنسيقات إضافية لصفحة نظرة عامة على تخطيط الأسبوع */
 .plan-week-overview-page {
     width: 400px; /* يمكنك تعديل العرض حسب الرغبة */
+    max-width: 95%; /* عشان ميكبرش عن عرض الشاشة في الجوال */
 }
 
 .plan-week-overview-page h1 {
@@ -264,6 +281,7 @@ input[type="number"] {
 /* تنسيقات إضافية لصفحة تسجيل الجولات */
 .record-set-page {
     width: 600px; /* زيادة العرض لاستيعاب النموذج */
+    max-width: 95%; /* عشان ميكبرش عن عرض الشاشة في الجوال */
 }
 
 .record-set-page h1 {
@@ -306,6 +324,7 @@ input[type="number"] {
 .view-progress-page {
     width: 80%; /* زيادة العرض للصفحة */
     max-width: 960px;
+    box-sizing: border-box; /* عشان الـ padding والـ border يبقوا جوه الـ width */
 }
 
 .view-progress-page h1 {
@@ -321,11 +340,20 @@ input[type="number"] {
     display: flex;
     gap: 20px;
     align-items: center;
+    flex-wrap: wrap; /* عشان العناصر تنزل تحت بعض في الشاشات الصغيرة */
 }
 
 .filter-form .form-group {
-    margin-bottom: 0; /* إزالة الهامش السفلي داخل النموذج */
+    margin-bottom: 15px; /* إضافة هامش سفلي في الشاشات الصغيرة */
     flex-grow: 1;
+    min-width: calc(50% - 10px); /* عشان يبقوا عنصرين في كل صف في الشاشات المتوسطة */
+}
+
+/* تعديل عرض عناصر النموذج في الشاشات الصغيرة */
+@media (max-width: 600px) {
+    .filter-form .form-group {
+        min-width: 100%; /* عشان كل عنصر ياخد عرض كامل في الجوال */
+    }
 }
 
 .filter-form label {
@@ -354,6 +382,8 @@ input[type="number"] {
     background-color: #007bff;
     color: #fff;
     transition: background-color 0.3s ease;
+    width: 100%; /* عشان الزر ياخد عرض كامل في الجوال */
+    margin-top: 15px; /* إضافة هامش علوي للزر في الجوال */
 }
 
 .filter-form button[type="submit"]:hover {
@@ -372,6 +402,7 @@ input[type="number"] {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: right; /* ضبط اتجاه النص داخل الخلايا */
+    font-size: 0.9em; /* تصغير الخط شوية عشان يتناسب مع الشاشات الصغيرة */
 }
 
 .progress-table th {
@@ -384,5 +415,30 @@ input[type="number"] {
 }
 
 .table-responsive {
-    overflow-x: auto;
+    overflow-x: auto; /* عشان الجدول لو كبير أوي يظهر فيه شريط تمرير أفقي */
+}
+
+/* تنسيقات عامة إضافية للجوال */
+@media (max-width: 600px) {
+    body {
+        padding: 10px; /* تقليل الـ padding العام في الجوال */
+    }
+
+    .container {
+        padding: 20px; /* تقليل الـ padding في الـ container في الجوال */
+    }
+
+    h1 {
+        font-size: 1.8em; /* تصغير حجم العنوان شوية في الجوال */
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-size: 1em; /* تصغير حجم الـ label في الجوال */
+    }
+
+    .btn {
+        font-size: 1em; /* تصغير حجم الخط في الأزرار في الجوال */
+        padding: 8px 15px;
+    }
 }

@@ -2,10 +2,14 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تخطيط يوم {{ day_name }} - الأسبوع رقم {{ week_number }}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
     <div class="container plan-day-page">
         <h1>تخطيط يوم {{ day_name }} - الأسبوع رقم {{ week_number }}</h1>
@@ -15,37 +19,42 @@
                 <label>{{ form.workouts.label }}</label>
                 <ul class="checkbox-list">
                     {% for workout in form.workouts %}
-                        <li>
-                            <label for="{{ workout.id_for_label }}">
-                                {{ workout }}
-                            </label>
-                        </li>
+                    <li>
+                        <label for="{{ workout.id_for_label }}">
+                            {{ workout }}
+                        </label>
+                    </li>
                     {% endfor %}
                 </ul>
                 {% if form.workouts.errors %}
-                    <div class="error">{{ form.workouts.errors }}</div>
+                <div class="error">{{ form.workouts.errors }}</div>
                 {% endif %}
             </div>
             <button type="submit" class="btn btn-primary">حفظ تمارين يوم {{ day_name }}</button>
         </form>
+
         <div class="mt-4">
             <h2>التمارين المخططة ليوم {{ day_name }}:</h2>
             {% if planned_workouts %}
-                <ul class="list-group">
-                    {% for planned_workout in planned_workouts %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span>{{ planned_workout.workout.name }}</span>
-                            <a href="{% url 'record_set' workout_day_id=planned_workout.id exercise_id=planned_workout.workout.id week_number=week_number %}" class="btn btn-sm btn-outline-success">تسجيل الجولات</a>
-                        </li>
-                    {% endfor %}
-                </ul>
+            <ul class="list-group">
+                {% for planned_workout in planned_workouts %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{ planned_workout.workout.name }}</span>
+                    <a href="{% url 'record_set' workout_day_id=planned_workout.id exercise_id=planned_workout.workout.id week_number=week_number %}"
+                        class="btn btn-sm btn-outline-success">تسجيل الجولات</a>
+                </li>
+                {% endfor %}
+            </ul>
             {% else %}
-                <p>لم يتم تخطيط أي تمارين لهذا اليوم بعد.</p>
+            <p>لم يتم تخطيط أي تمارين لهذا اليوم بعد.</p>
             {% endif %}
         </div>
+
         <div class="mt-3">
-            <a href="{% url 'plan_week_overview_with_number' week_number=week_number %}" class="btn btn-secondary">الرجوع لتخطيط الأسبوع</a>
+            <a href="{% url 'plan_week_overview_with_number' week_number=week_number %}"
+                class="btn btn-secondary">الرجوع لتخطيط الأسبوع</a>
         </div>
     </div>
 </body>
+
 </html>

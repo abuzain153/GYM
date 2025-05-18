@@ -2,12 +2,16 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إضافة تمرين</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
-    <div class="container">
+    <div class="container add-exercise-page">
         <h1>إضافة تمرين جديد</h1>
         <form method="post">
             {% csrf_token %}
@@ -15,14 +19,14 @@
                 <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
                 {{ form.name }}
                 {% if form.name.errors %}
-                    <div class="error">{{ form.name.errors }}</div>
+                <div class="error">{{ form.name.errors }}</div>
                 {% endif %}
             </div>
             <div class="form-group">
                 <label for="{{ form.day_of_week.id_for_label }}">{{ form.day_of_week.label }}</label>
                 {{ form.day_of_week }}
                 {% if form.day_of_week.errors %}
-                    <div class="error">{{ form.day_of_week.errors }}</div>
+                <div class="error">{{ form.day_of_week.errors }}</div>
                 {% endif %}
             </div>
             <button type="submit" class="btn btn-primary">حفظ التمرين</button>
@@ -32,4 +36,5 @@
         </div>
     </div>
 </body>
+
 </html>
